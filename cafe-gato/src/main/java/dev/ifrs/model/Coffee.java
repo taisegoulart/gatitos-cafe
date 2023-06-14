@@ -1,10 +1,6 @@
 package dev.ifrs.model;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
+
+import jakarta.persistence.*;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 

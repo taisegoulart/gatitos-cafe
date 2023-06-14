@@ -1,8 +1,7 @@
 package dev.ifrs.model;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
-import jakarta.persistence.Column;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 //TODO: COLOCAR EM PASTAS DIFERENTES PARA SEREM SERVIÇOS DIFERENTWS, CUIDAR A COMUNICAÇÃO COM O PORPERTIES
