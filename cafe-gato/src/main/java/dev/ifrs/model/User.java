@@ -1,12 +1,13 @@
 package dev.ifrs.model;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class User extends PanacheEntityBase {
- @Column(nullable = false)
+public class User extends PanacheEntity {
+
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false, unique = true)

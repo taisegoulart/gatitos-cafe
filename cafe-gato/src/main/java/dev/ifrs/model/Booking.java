@@ -1,4 +1,5 @@
 package dev.ifrs.model;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import jakarta.persistence.*;
@@ -7,7 +8,7 @@ import java.time.LocalDateTime;
 //TODO: COLOCAR EM PASTAS DIFERENTES PARA SEREM SERVIÇOS DIFERENTWS, CUIDAR A COMUNICAÇÃO COM O PORPERTIES
 
 @Entity
-public class Booking extends PanacheEntityBase {
+public class Booking extends PanacheEntity {
 
     @ManyToOne
     private User user;
@@ -22,6 +23,9 @@ public class Booking extends PanacheEntityBase {
     private boolean timeframeAvailable;
 
    // Constructors, getters, and setters
+
+   public Booking (){};
+
     public User getUser() {
         return user;
     }
