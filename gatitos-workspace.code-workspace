@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "dev/cafe-gato"
+		},
+		{
+			"name": "cafe-auth",
+			"path": "dev/cafe-auth"
+		}
+	],
+	"settings": {}
+}
