@@ -28,6 +28,14 @@
     </dependencies>
   </dependencyManagement>
   <dependencies>
+
+    <dependency>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-pmd-plugin</artifactId>
+      <version>3.21.0</version>
+      <type>maven-plugin</type>
+     </dependency>
+
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-smallrye-jwt</artifactId>
@@ -100,6 +108,17 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+        <version>3.21.0</version>
+        <configuration>
+          <rulesets>
+            <!-- A rule set, that comes bundled with PMD -->
+            <ruleset>/category/java/bestpractices.xml</ruleset>
+          </rulesets>
+        </configuration>
       </plugin>
     </plugins>
   </build>
