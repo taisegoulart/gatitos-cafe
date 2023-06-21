@@ -7,14 +7,9 @@ import org.eclipse.microprofile.jwt.Claims;
 
 import io.smallrye.jwt.build.Jwt;
 import jakarta.annotation.security.PermitAll;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.Context;
-import jakarta.ws.rs.core.MediaType;
-import jakarta.ws.rs.core.SecurityContext;
 
-@Path("/identity")
+
+@Path("/auth")
 public class Identity {
     @GET
     @Path("/jwt") //caminho do GET
