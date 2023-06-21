@@ -37,6 +37,7 @@ public class UserCatResource {
         return Coffee.listAll();
     }
 
+
     @GET
     @Path("/{id}")
     public Cat getCoffee(@PathParam("id") Long id) {
