@@ -21,9 +21,9 @@ public class Auth {
     @Produces(MediaType.TEXT_PLAIN)
     public String generate() {
         return Jwt.issuer("http://localhost:8080")
-            .upn("rodrigo@rpmhub.dev")
+            .upn("rodrigo@rpmhub.dev") //identifiador do usuário
             .groups(new HashSet<>(Arrays.asList("User", "Admin")))
-            .claim(Claims.full_name, "Rodrigo Prestes Machado")
+            .claim(Claims.full_name, "Rodrigo Prestes Machado") //coresponde a carga de dados do usuário
             .sign();
 }
 
