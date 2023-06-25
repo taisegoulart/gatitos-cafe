@@ -1,15 +1,13 @@
 package dev.ifrs.model;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
-//TODO: COLOCAR EM PASTAS DIFERENTES PARA SEREM SERVIÇOS DIFERENTWS, CUIDAR A COMUNICAÇÃO COM O PORPERTIES
 
 @Entity
 public class Booking extends PanacheEntity {
-
+//TODO: booking pode estar ou não ligado ao usuário, se não estiver ligado ao usuário, o usuário é null
     @ManyToOne
     private User user;
 
@@ -64,11 +62,13 @@ public class Booking extends PanacheEntity {
         this.endTime = endTime;
         this.timeframeAvailable = timeframeAvailable;
     }
-    
 
+    public Booking(LocalDateTime startTime, LocalDateTime endTime, boolean timeframeAvailable) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.timeframeAvailable = timeframeAvailable;
+    }
     
-
- 
     
     
 }
