@@ -11,7 +11,8 @@ public class User {
     private String phone;
     private String password;
     private boolean isAdmin;
-    private List<Booking> bookings; //TODO: dúvida, eu posso importar a classe do outro projeto, ou preciso fazer um booking novo no model? (acho que sim)
+    private List<Booking> bookings; 
+    //TODO: dúvida, eu posso importar a classe do outro projeto, ou preciso fazer um booking novo no model? (acho que sim)
    
     public String getName() {
         return name;
