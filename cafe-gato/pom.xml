@@ -15,7 +15,12 @@
     <quarkus.platform.version>3.1.1.Final</quarkus.platform.version>
     <skipITs>true</skipITs>
     <surefire-plugin.version>3.0.0</surefire-plugin.version>
-  </properties>
+     <!-- Adicionando integração com SonarClould do github Actions-->
+       <sonar.organization>taisegoulart</sonar.organization>
+  <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+
+
+</properties>
   <dependencyManagement>
     <dependencies>
       <dependency>
