@@ -14,4 +14,7 @@ A verificação estática foi feita através da adição do plugin e da extensã
 
 ### Testes Unitários
 
-### Testes de componentes
+### Testes de Componente
+
+### Github Actions CI/CD
+Foram implementadas actions referentes a análise estática do código via SonarCloud, Java CI com Maven, Revisão de dependências e PMD (este último não consegui configurar corretamente).
