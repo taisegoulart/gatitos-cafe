@@ -7,7 +7,7 @@ Como a aplicação *não possui front-end desenvolvido nesse primeiro momento*, 
 - [x] Implementar uma **verificação estática** no projeto (**PMD** e/ou **SonarClould**, instalei a extensão de ambos no meu projeto)
 - [ ] Implementar um **conjunto de testes unitários**
 - [ ] Implementar **testes de componentes (API)** <s>e/ou testes de sistema (Selenium ou Cypress)</s>
-- [ ] Configure um ambiente de integração contínua de sua escolha, por exemplo, **Github Actions**, Jekins, Travis, Circle-CI, GitLab, entre outros.
+- [x] Configure um ambiente de integração contínua de sua escolha, por exemplo, **Github Actions**, Jekins, Travis, Circle-CI, GitLab, entre outros.
 
 ### Verificação estática
 A verificação estática foi feita através da adição do plugin e da extensão do PMD juntamente com a adição da extenção do Sonarlint ao projeto no VS Code. Além disso, foi seguido o passo-a-passo para a implementação do Github Actions com o SonarClould.
