@@ -1,4 +1,4 @@
-package dev.ifrs.Web;
+package dev.ifrs.web;
 
 public class LoginWS {
     

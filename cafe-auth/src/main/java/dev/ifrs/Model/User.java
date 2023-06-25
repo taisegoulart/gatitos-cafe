@@ -1,4 +1,4 @@
-package dev.ifrs.Model;
+package dev.ifrs.model;
 
 import java.util.List;
 
