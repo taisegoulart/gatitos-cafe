@@ -3,7 +3,7 @@ package dev.ifrs.model;
 import jakarta.persistence.*;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
-
+@Entity
 public class Coffee extends PanacheEntity {  //This class extends PanacheEntity, which provides basic CRUD operations
     private String name;
     private String description;

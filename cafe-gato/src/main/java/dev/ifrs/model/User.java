@@ -2,7 +2,11 @@ package dev.ifrs.model;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class User extends PanacheEntity {
@@ -25,15 +29,19 @@ public class User extends PanacheEntity {
     @Column(nullable = false)
     private boolean isAdmin;
 
-//dúvida private booleean admin
+
     
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    @JsonManagedReference
     private List<Booking> bookings;
 
     // Constructors, getters and setters
     
    
 public User() {
+    this.bookings = new ArrayList<>();
     }
 
 public String getName() {

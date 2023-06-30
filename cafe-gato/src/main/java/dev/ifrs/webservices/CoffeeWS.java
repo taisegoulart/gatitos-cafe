@@ -1,4 +1,4 @@
-package dev.ifrs.repositories;
+package dev.ifrs.webservices;
 
 
 import java.util.List;
@@ -13,31 +13,36 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 
 import dev.ifrs.model.*;
 
-@Path("/admin/coffees")
+@Path("/coffees")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Transactional
-@RolesAllowed("admin")
-public class AdminCoffeeResource {
+
+public class CoffeeWS {
     //pensamento: fazer com formulário?
 
     @GET
+    @PermitAll
     public List<Coffee> getAllCoffees() {
         return Coffee.listAll();
     }
 
     @POST
+    @Path("/add")
+    @RolesAllowed({"Admin"})
     public Response addCoffee(Coffee coffee) {
         coffee.persist();
         return Response.status(Response.Status.CREATED).entity(coffee).build();
     }
 
     @PUT
-    @Path("/{id}")
+    @Path("/update/{id}")
+     @RolesAllowed({"Admin"})
     public Coffee updateCoffee(@PathParam("id") Long id, Coffee updatedCoffee) {
         Coffee coffee = Coffee.findById(id);
         if (coffee != null) {
@@ -49,7 +54,8 @@ public class AdminCoffeeResource {
     }
 
     @DELETE
-    @Path("/{id}")
+     @RolesAllowed({"Admin"})
+    @Path("/delete/{id}")
     public Response deleteCoffee(@PathParam("id") Long id) {
         Coffee coffee = Coffee.findById(id);
         if (coffee != null) {

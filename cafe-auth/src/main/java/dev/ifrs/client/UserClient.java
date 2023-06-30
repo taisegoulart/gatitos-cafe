@@ -9,13 +9,12 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 
-@RegisterRestClient
+@RegisterRestClient(baseUri = "http://localhost:8082/user") //lugar que ele vai se comunicar
 public interface UserClient {
     @POST
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/findbylogin")
     //public String findByLogin(String login); //sugestão do copilot
-    public User findByLogin(@FormParam("login")String login);
-
+    public User findByLogin(@FormParam("login")String login, @FormParam("senha")String senha); 
 }

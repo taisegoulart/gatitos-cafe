@@ -4,14 +4,12 @@ import java.util.List;
 
 
 public class User {
-      
-    private String name;
+    private String name; 
     private String login;
-    private String email;
-    private String phone;
+    //private String email; para a Taíse do futuro: não precisa de email, só login e senha
     private String password;
     private boolean isAdmin;
-    private List<Booking> bookings; 
+
     //TODO: dúvida, eu posso importar a classe do outro projeto, ou preciso fazer um booking novo no model? (acho que sim)
    
     public String getName() {
@@ -26,18 +24,7 @@ public class User {
     public void setLogin(String login) {
         this.login = login;
     }
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
+   
     public String getPassword() {
         return password;
     }
@@ -50,21 +37,8 @@ public class User {
     public void setAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
-    public List<Booking> getBookings() {
-        return bookings;
-    }
-    public void setBookings(List<Booking> bookings) {
-        this.bookings = bookings;
-    }
-    public User(String name, String login, String email, String phone, String password, boolean isAdmin,
-            List<Booking> bookings) {
-        this.name = name;
-        this.login = login;
-        this.email = email;
-        this.phone = phone;
-        this.password = password;
-        this.isAdmin = isAdmin;
-        this.bookings = bookings;
+
+    public User() {
     }
     @Override
     public int hashCode() {
@@ -72,11 +46,8 @@ public class User {
         int result = 1;
         result = prime * result + ((name == null) ? 0 : name.hashCode());
         result = prime * result + ((login == null) ? 0 : login.hashCode());
-        result = prime * result + ((email == null) ? 0 : email.hashCode());
-        result = prime * result + ((phone == null) ? 0 : phone.hashCode());
         result = prime * result + ((password == null) ? 0 : password.hashCode());
         result = prime * result + (isAdmin ? 1231 : 1237);
-        result = prime * result + ((bookings == null) ? 0 : bookings.hashCode());
         return result;
     }
     @Override
@@ -98,16 +69,6 @@ public class User {
                 return false;
         } else if (!login.equals(other.login))
             return false;
-        if (email == null) {
-            if (other.email != null)
-                return false;
-        } else if (!email.equals(other.email))
-            return false;
-        if (phone == null) {
-            if (other.phone != null)
-                return false;
-        } else if (!phone.equals(other.phone))
-            return false;
         if (password == null) {
             if (other.password != null)
                 return false;
@@ -115,20 +76,17 @@ public class User {
             return false;
         if (isAdmin != other.isAdmin)
             return false;
-        if (bookings == null) {
-            if (other.bookings != null)
-                return false;
-        } else if (!bookings.equals(other.bookings))
-            return false;
         return true;
+    }
+    public User(String name, String login, String password, boolean isAdmin) {
+        this.name = name;
+        this.login = login;
+        this.password = password;
+        this.isAdmin = isAdmin;
     }
     @Override
     public String toString() {
-        return "User [name=" + name + ", login=" + login + ", email=" + email + ", phone=" + phone + ", password="
-                + password + ", isAdmin=" + isAdmin + ", bookings=" + bookings + "]";
+        return "User [name=" + name + ", login=" + login + ", password=" + password + ", isAdmin=" + isAdmin + "]";
     }
-
-
-    //TODO dúvida: adicionar a lista de booking aqui?
     
 }

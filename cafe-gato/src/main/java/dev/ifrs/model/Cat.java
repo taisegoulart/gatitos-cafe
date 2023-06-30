@@ -13,6 +13,7 @@ public class Cat extends PanacheEntity {
     private boolean forAdoption;
 
 
+
     // Constructors, getters, and setters
     // 
 
