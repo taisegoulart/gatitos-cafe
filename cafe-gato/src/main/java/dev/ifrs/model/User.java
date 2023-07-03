@@ -1,4 +1,5 @@
 package dev.ifrs.model;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import jakarta.persistence.*;
@@ -8,11 +9,14 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+/**
+ * Representa um Usuário do sistema do cat café.
+ */
 @Entity
-public class User extends PanacheEntity {
+public class User extends PanacheEntity { // Essa classe extende PanacheEntity, que fornece operações CRUD básicas
 
     @Column(nullable = false)
-    private String name;
+    private String name; // Nome do usuário
 
     @Column(nullable = false, unique = true)
     private String login;
@@ -29,57 +33,17 @@ public class User extends PanacheEntity {
     @Column(nullable = false)
     private boolean isAdmin;
 
-
-    
-    //@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER) // Um usuário pode ter vários bookings, a relação é
+                                                                   // OneToMany pois um usuário pode ter vários bookings
     @JoinColumn(name = "user_id")
     @JsonManagedReference
     private List<Booking> bookings;
 
-    // Constructors, getters and setters
-    
-   
-public User() {
-    this.bookings = new ArrayList<>();
+    // Constructors
+    public User() {
+        this.bookings = new ArrayList<>();
     }
 
-public String getName() {
-    return name;
-}
-public void setName(String name) {
-    this.name = name;
-}
-public String getLogin() {
-    return login;
-}
-public void setLogin(String login) {
-    this.login = login;
-}
-public String getEmail() {
-    return email;
-}
-public void setEmail(String email) {
-    this.email = email;
-}
-public String getPhone() {
-    return phone;
-}
-public void setPhone(String phone) {
-    this.phone = phone;
-}
-public String getPassword() {
-    return password;
-}
-public void setPassword(String password) {
-    this.password = password;
-}
-public boolean isAdmin() {
-    return isAdmin;
-}
-public void setAdmin(boolean isAdmin) {
-    this.isAdmin = isAdmin;
-}
     public User(String name, String login, String email, String phone, String password, boolean isAdmin) {
         this.name = name;
         this.login = login;
@@ -88,9 +52,57 @@ public void setAdmin(boolean isAdmin) {
         this.password = password;
         this.isAdmin = isAdmin;
     }
-    
-    
-//Implementando a lista de reservas para brincar com os gatinhos
+
+    // Getters & Setters
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    // Implementando a lista de reservas para brincar com os gatinhos
     public List<Booking> getBookings() {
         return bookings;
     }
@@ -98,9 +110,8 @@ public void setAdmin(boolean isAdmin) {
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
     }
-//Hashcode e Equals
 
-
+    // Hashcode e Equals
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -159,17 +170,11 @@ public void setAdmin(boolean isAdmin) {
         return true;
     }
 
-
-//toString 
+    // toString
     @Override
     public String toString() {
         return "User [name=" + name + ", login=" + login + ", email=" + email + ", phone=" + phone + ", password="
                 + password + ", isAdmin=" + isAdmin + ", bookings=" + bookings + "]";
     }
-  
 
 }
-
-
-//TODO dúvida: Vai ter dois tipos de usuário, o admin que pode adicionar os gatos e etc e o usuário normal que não pode. Como eu faço essa diferenciação?
-

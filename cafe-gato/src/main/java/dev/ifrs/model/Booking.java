@@ -1,29 +1,49 @@
 package dev.ifrs.model;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+/**
+ * Represents a booking made by a user for a time frame.
+ */
 @Entity
 public class Booking extends PanacheEntity {
-//TODO: booking pode estar ou não ligado ao usuário, se não estiver ligado ao usuário, o usuário é null
-    @ManyToOne
-    private User user;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonManagedReference
+    private User user; // Usuário que realiza o booking, a relação é ManyToOne pois um usuário pode
+                       // realizar vários bookings
 
     @Column(nullable = false)
-    private LocalDateTime startTime;
+    private String startTime; // Início do booking
 
     @Column(nullable = false)
-    private LocalDateTime endTime;
+    private String endTime; // Fim do booking
 
-    @Column(nullable =false)
-    private boolean timeframeAvailable;
+    @Column(nullable = false)
+    private boolean timeframeAvailable; // Indica se o timeframe está disponível
 
-   // Constructors, getters, and setters
+    // Constructors
+    public Booking() {
+    };
 
-   public Booking (){};
+    public Booking(User user, String startTime, String endTime, boolean timeframeAvailable) {
+        this.user = user;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.timeframeAvailable = timeframeAvailable;
+    }
 
+    public Booking(String startTime, String endTime, boolean timeframeAvailable) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.timeframeAvailable = timeframeAvailable;
+    }
+
+    // Getters & Setters
     public User getUser() {
         return user;
     }
@@ -32,19 +52,19 @@ public class Booking extends PanacheEntity {
         this.user = user;
     }
 
-    public LocalDateTime getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
@@ -56,19 +76,4 @@ public class Booking extends PanacheEntity {
         this.timeframeAvailable = timeframeAvailable;
     }
 
-    public Booking(User user, LocalDateTime startTime, LocalDateTime endTime, boolean timeframeAvailable) {
-        this.user = user;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.timeframeAvailable = timeframeAvailable;
-    }
-
-    public Booking(LocalDateTime startTime, LocalDateTime endTime, boolean timeframeAvailable) {
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.timeframeAvailable = timeframeAvailable;
-    }
-    
-    
-    
 }

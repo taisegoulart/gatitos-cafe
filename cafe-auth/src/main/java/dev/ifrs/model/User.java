@@ -1,45 +1,59 @@
 package dev.ifrs.model;
 
-import java.util.List;
-
-
+/**
+ * Represents a user in the system.
+ */
 public class User {
-    private String name; 
-    private String login;
-    //private String email; para a Taíse do futuro: não precisa de email, só login e senha
-    private String password;
-    private boolean isAdmin;
+    private String name; // Nome do usuário
+    private String login; // login do usuário
+    private String password; // senha do usuário
+    private boolean isAdmin; // booleano que indica se o usuário é administrador ou não
 
-    //TODO: dúvida, eu posso importar a classe do outro projeto, ou preciso fazer um booking novo no model? (acho que sim)
-   
+    // Getters & Setters
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getLogin() {
         return login;
     }
+
     public void setLogin(String login) {
         this.login = login;
     }
-   
+
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
+
     public boolean isAdmin() {
         return isAdmin;
     }
+
     public void setAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
 
+    // Métodos construtores
     public User() {
     }
+
+    public User(String name, String login, String password, boolean isAdmin) {
+        this.name = name;
+        this.login = login;
+        this.password = password;
+        this.isAdmin = isAdmin;
+    }
+
+    // Métodos equals, hashCode e toString
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -50,6 +64,7 @@ public class User {
         result = prime * result + (isAdmin ? 1231 : 1237);
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -78,15 +93,10 @@ public class User {
             return false;
         return true;
     }
-    public User(String name, String login, String password, boolean isAdmin) {
-        this.name = name;
-        this.login = login;
-        this.password = password;
-        this.isAdmin = isAdmin;
-    }
+
     @Override
     public String toString() {
         return "User [name=" + name + ", login=" + login + ", password=" + password + ", isAdmin=" + isAdmin + "]";
     }
-    
+
 }

@@ -1,27 +1,28 @@
 package dev.ifrs.model;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 import jakarta.persistence.*;
 
 @Entity
-public class Cat extends PanacheEntity {
-    private String name;
-    private int age;
-    private String sex;
-    private String breed;
-    private String bio;
-    private boolean forAdoption;
+/**
+ * Representa um gato que está no cat café.
+ */
+public class Cat extends PanacheEntity { // Essa classe extende PanacheEntity, que fornece operações CRUD básicas
+    private String name; // Nome do gato
+    private int age; // Idade do gato
+    private String sex; // Sexo do gato
+    private String breed; // Raça do gato
+    private String bio; // Uma pequena biografia ou descrição do gato
+    private boolean forAdoption; // Indica se o gato está para adoção
 
-
-
-    // Constructors, getters, and setters
-    // 
+    // Constructors
 
     public Cat() {
     }
 
     public Cat(String name, int age, String sex, String breed, String bio, boolean forAdoption) {
-     
+
         this.name = name;
         this.age = age;
         this.sex = sex;
@@ -30,9 +31,7 @@ public class Cat extends PanacheEntity {
         this.forAdoption = forAdoption;
     }
 
-
-    // Getters and setters
-
+    // Getters & setters
     public String getName() {
         return name;
     }
@@ -81,7 +80,7 @@ public class Cat extends PanacheEntity {
         this.forAdoption = forAdoption;
     }
 
-//Hash code and equals
+    // Métodos Hash code e equals
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -130,12 +129,12 @@ public class Cat extends PanacheEntity {
             return false;
         return true;
     }
-//toString
 
+    // Método toString
     @Override
     public String toString() {
         return "Cat [name=" + name + ", age=" + age + ", sex=" + sex + ", breed=" + breed + ", bio=" + bio
                 + ", forAdoption=" + forAdoption + "]";
     }
-    
+
 }
